@@ -1,209 +1,251 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown Bac 2027</title>
-/* ✨ Animations */
-h1 {
-    animation: floatTitle 3s ease-in-out infinite;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-@keyframes floatTitle {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-6px);
-    }
-}
+    <title>Bac National 2027</title>
 
-.box {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.box:hover {
-    transform: translateY(-7px) scale(1.02);
-}
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        color: white;
-        background: linear-gradient(135deg, #071a33, #123b68, #071a33);
-        text-align: center;
-    }
-
-    .container {
-        width: 90%;
-        max-width: 850px;
-    }
-
-    h1 {
-        font-size: clamp(28px, 5vw, 52px);
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        color: #b9d9ff;
-        font-size: 18px;
-        margin-bottom: 35px;
-    }
-
-    .countdown {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-    }
-
-    .box {
-        background: rgba(255,255,255,0.1);
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 20px;
-        padding: 25px 10px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    .number {
-        font-size: clamp(30px, 6vw, 60px);
-        font-weight: bold;
-        color: #4db8ff;
-    }
-
-    .label {
-        margin-top: 8px;
-        font-size: 14px;
-        color: #d9ecff;
-    }
-
-    #examDay {
-        display: none;
-        font-size: clamp(30px, 6vw, 60px);
-        font-weight: bold;
-        color: #4db8ff;
-        margin-top: 30px;
-    }
-
-    @media (max-width: 600px) {
-        .countdown {
-            grid-template-columns: repeat(2, 1fr);
+    <style>
+        * {
+            box-sizing: border-box;
         }
-    }
-</style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #071a33,
+                #123b68,
+                #071a33
+            );
+
+            background-size: 300% 300%;
+            animation: backgroundMove 10s ease infinite;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 60px);
+            margin: 0 0 12px;
+
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        .subtitle {
+            color: #9dd9ff;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .box {
+            padding: 25px 10px;
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .number {
+            font-size: clamp(35px, 6vw, 60px);
+            font-weight: bold;
+            color: #4db8ff;
+
+            animation: numberGlow 2s ease-in-out infinite;
+        }
+
+        .label {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #d9ecff;
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 17px;
+            color: #b9dcf7;
+        }
+
+        /* حركة الخلفية */
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* حركة العنوان */
+        @keyframes titleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* إضاءة الأرقام */
+        @keyframes numberGlow {
+            0%, 100% {
+                text-shadow: 0 0 5px rgba(77, 184, 255, 0.2);
+            }
+
+            50% {
+                text-shadow: 0 0 18px rgba(77, 184, 255, 0.7);
+            }
+        }
+
+        /* الهاتف */
+        @media (max-width: 600px) {
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .box {
+                padding: 20px 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>🎓 Bac National 2027</h1>
-    <div class="subtitle" id="subtitle">
-        Countdown jusqu'au début des examens
+        <h1>🎓 Bac National 2027</h1>
+
+        <div class="subtitle">
+            ⏳ Countdown jusqu'au 1er juin 2027
+        </div>
+
+        <div class="countdown">
+
+            <div class="box">
+                <div class="number" id="days">0</div>
+                <div class="label">JOURS</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="hours">00</div>
+                <div class="label">HEURES</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="minutes">00</div>
+                <div class="label">MINUTES</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="seconds">00</div>
+                <div class="label">SECONDES</div>
+            </div>
+
+        </div>
+
+        <div class="message">
+            ✨ Chaque seconde te rapproche de ton objectif ✨
+        </div>
+
     </div>
 
-    <div class="countdown" id="countdown">
 
-        <div class="box">
-            <div class="number" id="days">0</div>
-            <div class="label">JOURS</div>
-        </div>
+    <script>
 
-        <div class="box">
-            <div class="number" id="hours">0</div>
-            <div class="label">HEURES</div>
-        </div>
+        const examDate = new Date("2027-06-01T00:00:00").getTime();
 
-        <div class="box">
-            <div class="number" id="minutes">0</div>
-            <div class="label">MINUTES</div>
-        </div>
+        function updateCountdown() {
 
-        <div class="box">
-            <div class="number" id="seconds">0</div>
-            <div class="label">SECONDES</div>
-        </div>
+            const now = new Date().getTime();
 
-    </div>
+            const difference = examDate - now;
 
-    <div id="examDay"></div>
+            if (difference <= 0) {
 
-</div>
+                document.getElementById("days").textContent = "0";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
 
-<script>
+                document.querySelector(".subtitle").textContent =
+                    "🎓 C'est le jour du Bac National !";
 
-const startDate = new Date("2027-06-01T08:00:00");
-const endDate   = new Date("2027-06-03T23:59:59");
+                return;
+            }
 
-function updateCountdown() {
+            const days = Math.floor(
+                difference / (1000 * 60 * 60 * 24)
+            );
 
-    const now = new Date();
+            const hours = Math.floor(
+                (difference / (1000 * 60 * 60)) % 24
+            );
 
-    // Avant le début du bac
-    if (now < startDate) {
+            const minutes = Math.floor(
+                (difference / (1000 * 60)) % 60
+            );
 
-        const difference = startDate - now;
+            const seconds = Math.floor(
+                (difference / 1000) % 60
+            );
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
-        );
-        const minutes = Math.floor(
-            (difference / (1000 * 60)) % 60
-        );
-        const seconds = Math.floor(
-            (difference / 1000) % 60
-        );
+            document.getElementById("days").textContent = days;
 
-        document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
 
-        document.getElementById("subtitle").textContent =
-            "⏳ باقي على الوطني 2027";
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
 
-        return;
-    }
-
-    // أيام الامتحان
-    if (now >= startDate && now <= endDate) {
-
-        document.getElementById("countdown").style.display = "none";
-        document.getElementById("examDay").style.display = "block";
-
-        const date = now.getDate();
-
-        if (date === 1) {
-            document.getElementById("examDay").textContent =
-                "📝 اليوم الأول — 1 يونيو 2027";
-        }
-        else if (date === 2) {
-            document.getElementById("examDay").textContent =
-                "📝 اليوم الثاني — 2 يونيو 2027";
-        }
-        else if (date === 3) {
-            document.getElementById("examDay").textContent =
-                "📝 اليوم الثالث — 3 يونيو 2027";
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
         }
 
-        document.getElementById("subtitle").textContent =
-            "🔥 بالتوفيق لجميع المترشحين!";
-    }
-}
+        updateCountdown();
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 1000);
 
-</script>
+    </script>
 
 </body>
+
 </html>
