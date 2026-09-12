@@ -19,38 +19,63 @@ body {
     overflow: hidden;
 
     font-family: Georgia, "Times New Roman", serif;
+    color: white;
 
     background:
-        linear-gradient(
-            rgba(10, 5, 35, 0.18),
-            rgba(10, 5, 35, 0.18)
-        ),
-        url("background.png");
+        radial-gradient(circle at 50% 40%, #4b3a91 0%, transparent 35%),
+        radial-gradient(circle at 10% 80%, #7b3c83 0%, transparent 30%),
+        radial-gradient(circle at 90% 15%, #593b91 0%, transparent 28%),
+        linear-gradient(135deg, #090827, #171044, #29154d, #090827);
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
-/* طبقة خفيفة فوق الخلفية */
+/* 🌌 حركة خفيفة للخلفية */
 
-body::after {
+body::before {
     content: "";
+    position: fixed;
+    inset: -20%;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+        rgba(255,180,245,.12),
+        transparent 20%),
+
+        radial-gradient(circle at 70% 60%,
+        rgba(160,140,255,.12),
+        transparent 22%);
+
+    animation: backgroundMove 12s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+
+/* ✨ البريق */
+
+.sparkles {
     position: fixed;
     inset: 0;
 
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 25%,
-            rgba(8, 4, 35, 0.35) 100%
-        );
-
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
+}
+
+
+.sparkle {
+    position: absolute;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 6px #fff,
+        0 0 15px #d9b5ff;
+
+    animation: sparkle 3s ease-in-out infinite;
 }
 
 
@@ -63,9 +88,6 @@ body::after {
     width: 90%;
     max-width: 900px;
 
-    margin: auto;
-    padding-top: 8vh;
-
     text-align: center;
 }
 
@@ -77,14 +99,14 @@ body::after {
 
     letter-spacing: 6px;
 
-    color: #e8b9e9;
+    color: #e6b8e8;
 
     margin-bottom: 8px;
 
     text-shadow:
-        0 0 8px #d77be9;
+        0 0 8px #d889e8;
 
-    animation: nameGlow 3s ease-in-out infinite;
+    animation: glow 3s ease-in-out infinite;
 }
 
 
@@ -93,68 +115,69 @@ body::after {
 h1 {
     margin: 0;
 
-    font-size: clamp(38px, 6vw, 72px);
+    font-size: clamp(40px, 6vw, 72px);
 
     color: white;
 
     text-shadow:
         0 0 8px white,
-        0 0 18px #9b83ff,
-        0 0 35px #775cff;
+        0 0 20px #a48cff,
+        0 0 40px #765cff;
 
     animation: titleFloat 4s ease-in-out infinite;
 }
 
 
-/* الجملة */
+/* النص */
 
 .subtitle {
-    margin-top: 12px;
-    margin-bottom: 25px;
+    margin-top: 14px;
+    margin-bottom: 30px;
 
     font-size: 17px;
 
-    color: #eee0ff;
+    color: #eadfff;
 
-    text-shadow: 0 0 8px #9e72d9;
+    text-shadow:
+        0 0 8px #a984df;
 }
 
 
-/* الصندوق ديال countdown */
+/* Countdown */
 
 .countdown {
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
 
-    gap: 16px;
+    gap: 17px;
 
-    max-width: 780px;
+    max-width: 800px;
 
     margin: auto;
 }
 
 
-/* boxes */
+/* الصناديق */
 
 .box {
-    padding: 20px 10px;
+    padding: 22px 10px;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     background:
-        rgba(43, 27, 91, 0.72);
+        rgba(67, 48, 120, .38);
 
-    border: 1px solid
-        rgba(225, 190, 255, 0.45);
+    border:
+        1px solid rgba(225, 205, 255, .35);
 
     backdrop-filter: blur(12px);
 
     box-shadow:
-        0 0 18px rgba(150, 100, 255, 0.22),
-        inset 0 0 15px rgba(255,255,255,0.04);
+        0 0 20px rgba(130, 100, 255, .20),
+        inset 0 0 18px rgba(255,255,255,.04);
 
-    transition: 0.35s ease;
+    transition: .3s ease;
 
     animation: boxFloat 4s ease-in-out infinite;
 }
@@ -162,11 +185,11 @@ h1 {
 
 .box:hover {
     transform:
-        translateY(-8px)
-        scale(1.04);
+        translateY(-7px)
+        scale(1.03);
 
     box-shadow:
-        0 0 30px rgba(190, 130, 255, 0.45);
+        0 0 30px rgba(190,150,255,.4);
 }
 
 
@@ -186,16 +209,16 @@ h1 {
 /* الأرقام */
 
 .number {
-    font-size: clamp(35px, 5vw, 58px);
+    font-size: clamp(38px, 5vw, 60px);
 
     font-weight: bold;
 
-    color: #c8ddff;
+    color: #c9ddff;
 
     text-shadow:
-        0 0 8px #8bbcff,
-        0 0 20px #7187ff,
-        0 0 35px #6670ff;
+        0 0 8px #9ac5ff,
+        0 0 20px #778bff,
+        0 0 35px #6870ff;
 
     animation: numberGlow 2.5s ease-in-out infinite;
 }
@@ -210,76 +233,46 @@ h1 {
 
     letter-spacing: 3px;
 
-    color: #eadfff;
+    color: #eee5ff;
 }
 
 
-/* الجملة الأخيرة */
+/* الرسالة */
 
 .message {
-    margin-top: 25px;
+    margin-top: 28px;
 
-    font-size: 17px;
+    font-size: 18px;
 
-    color: #e8c7ff;
+    color: #e7c9ff;
 
     text-shadow:
-        0 0 10px #b66cff;
+        0 0 10px #b979ff;
 
-    animation: softGlow 3s ease-in-out infinite;
+    animation: glow 3s ease-in-out infinite;
 }
 
 
-/* 🌸❄️ الورود والثلج */
+/* 🌌 حركة الخلفية */
 
-.particle {
-    position: fixed;
+@keyframes backgroundMove {
 
-    top: -50px;
-
-    z-index: 10;
-
-    pointer-events: none;
-
-    user-select: none;
-
-    animation:
-        fall linear forwards,
-        sway ease-in-out infinite;
-}
-
-
-@keyframes fall {
-
-    from {
-        transform:
-            translateY(-60px)
-            rotate(0deg);
-    }
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-    }
-
-}
-
-
-@keyframes sway {
-
-    0%, 100% {
-        margin-left: 0;
+    0% {
+        transform: translate(0, 0) scale(1);
     }
 
     50% {
-        margin-left: 60px;
+        transform: translate(2%, -2%) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-2%, 2%) scale(1);
     }
 
 }
 
 
-/* حركة العنوان */
+/* العنوان */
 
 @keyframes titleFloat {
 
@@ -294,37 +287,7 @@ h1 {
 }
 
 
-/* حركة الاسم */
-
-@keyframes nameGlow {
-
-    0%, 100% {
-        opacity: .65;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-}
-
-
-/* حركة الأرقام */
-
-@keyframes numberGlow {
-
-    0%, 100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(1.25);
-    }
-
-}
-
-
-/* حركة boxes */
+/* الصناديق */
 
 @keyframes boxFloat {
 
@@ -339,9 +302,41 @@ h1 {
 }
 
 
-/* glow */
+/* بريق الأرقام */
 
-@keyframes softGlow {
+@keyframes numberGlow {
+
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.3);
+    }
+
+}
+
+
+/* ✨ البريق */
+
+@keyframes sparkle {
+
+    0%, 100% {
+        opacity: .15;
+        transform: scale(.7) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(25deg);
+    }
+
+}
+
+
+/* Glow */
+
+@keyframes glow {
 
     0%, 100% {
         opacity: .7;
@@ -358,17 +353,9 @@ h1 {
 
 @media (max-width: 700px) {
 
-    .container {
-        padding-top: 7vh;
-    }
-
     .countdown {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-    }
-
-    .box {
-        padding: 15px 5px;
     }
 
     .name {
@@ -392,7 +379,33 @@ h1 {
 <body>
 
 
+<!-- ✨ البريق -->
+
+<div class="sparkles">
+
+    <span class="sparkle" style="left:8%; top:15%; animation-delay:0s;">✦</span>
+
+    <span class="sparkle" style="left:18%; top:72%; animation-delay:1s;">✧</span>
+
+    <span class="sparkle" style="left:32%; top:12%; animation-delay:1.8s;">✦</span>
+
+    <span class="sparkle" style="left:48%; top:82%; animation-delay:.5s;">✧</span>
+
+    <span class="sparkle" style="left:65%; top:18%; animation-delay:1.3s;">✦</span>
+
+    <span class="sparkle" style="left:78%; top:70%; animation-delay:2s;">✧</span>
+
+    <span class="sparkle" style="left:91%; top:25%; animation-delay:.8s;">✦</span>
+
+    <span class="sparkle" style="left:87%; top:85%; animation-delay:1.5s;">✧</span>
+
+</div>
+
+
+<!-- المحتوى -->
+
 <div class="container">
+
 
     <div class="name">
         IMANE ♡
@@ -420,9 +433,7 @@ h1 {
 
         <div class="box">
 
-            <div
-                class="number"
-                id="days">
+            <div class="number" id="days">
                 0
             </div>
 
@@ -435,9 +446,7 @@ h1 {
 
         <div class="box">
 
-            <div
-                class="number"
-                id="hours">
+            <div class="number" id="hours">
                 00
             </div>
 
@@ -450,9 +459,7 @@ h1 {
 
         <div class="box">
 
-            <div
-                class="number"
-                id="minutes">
+            <div class="number" id="minutes">
                 00
             </div>
 
@@ -465,9 +472,7 @@ h1 {
 
         <div class="box">
 
-            <div
-                class="number"
-                id="seconds">
+            <div class="number" id="seconds">
                 00
             </div>
 
@@ -487,6 +492,7 @@ h1 {
 
     </div>
 
+
 </div>
 
 
@@ -494,7 +500,7 @@ h1 {
 <script>
 
 
-/* التاريخ ديال الوطني */
+/* ⏳ Countdown jusqu'au 1 juin 2027 */
 
 const examDate =
     new Date("2027-06-01T00:00:00").getTime();
@@ -502,10 +508,8 @@ const examDate =
 
 function updateCountdown() {
 
-
     const now =
         new Date().getTime();
-
 
     const difference =
         examDate - now;
@@ -513,17 +517,13 @@ function updateCountdown() {
 
     if (difference <= 0) {
 
-        document.getElementById("days")
-            .textContent = "0";
+        document.getElementById("days").textContent = "0";
 
-        document.getElementById("hours")
-            .textContent = "00";
+        document.getElementById("hours").textContent = "00";
 
-        document.getElementById("minutes")
-            .textContent = "00";
+        document.getElementById("minutes").textContent = "00";
 
-        document.getElementById("seconds")
-            .textContent = "00";
+        document.getElementById("seconds").textContent = "00";
 
         return;
     }
@@ -579,96 +579,7 @@ function updateCountdown() {
 
 updateCountdown();
 
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-
-/* 🌸❄️ particles */
-
-const particles = [
-
-    "🌸",
-    "🌸",
-    "🌹",
-    "🌸",
-    "❄️",
-    "❄",
-    "✦",
-    "✧"
-
-];
-
-
-function createParticle() {
-
-
-    const particle =
-        document.createElement("div");
-
-
-    particle.className =
-        "particle";
-
-
-    particle.textContent =
-        particles[
-            Math.floor(
-                Math.random() *
-                particles.length
-            )
-        ];
-
-
-    /* الجوانب */
-
-    if (Math.random() < 0.5) {
-
-        particle.style.left =
-            (Math.random() * 25) + "vw";
-
-    } else {
-
-        particle.style.left =
-            (75 + Math.random() * 25) + "vw";
-
-    }
-
-
-    particle.style.fontSize =
-        (12 + Math.random() * 16) + "px";
-
-
-    const duration =
-        7 + Math.random() * 8;
-
-
-    particle.style.animationDuration =
-        duration + "s, " +
-        (2 + Math.random() * 3) + "s";
-
-
-    document.body.appendChild(
-        particle
-    );
-
-
-    setTimeout(
-        () => particle.remove(),
-        duration * 1000
-    );
-
-}
-
-
-setInterval(
-    createParticle,
-    450
-);
-
+setInterval(updateCountdown, 1000);
 
 </script>
 
