@@ -4,7 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Countdown Bac 2027</title>
+/* ✨ Animations */
+h1 {
+    animation: floatTitle 3s ease-in-out infinite;
+}
 
+@keyframes floatTitle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-7px) scale(1.02);
+}
 <style>
     * {
         box-sizing: border-box;
