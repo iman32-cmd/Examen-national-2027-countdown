@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Imane | Bac National 2027</title>
+<title>IMANE ♡ | Bac National 2027</title>
 
 <style>
 
@@ -13,69 +13,65 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
-    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+body {
     overflow: hidden;
 
     font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        #10082f url("background.png")
+        center / cover no-repeat;
+
     color: white;
-
-    background:
-        radial-gradient(circle at 50% 40%, #4b3a91 0%, transparent 35%),
-        radial-gradient(circle at 10% 80%, #7b3c83 0%, transparent 30%),
-        radial-gradient(circle at 90% 15%, #593b91 0%, transparent 28%),
-        linear-gradient(135deg, #090827, #171044, #29154d, #090827);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 
-/* 🌌 حركة خفيفة للخلفية */
+/* طبقة غوزية فوق الصورة */
 
-body::before {
-    content: "";
+.overlay {
     position: fixed;
-    inset: -20%;
+    inset: 0;
 
     background:
-        radial-gradient(circle at 30% 30%,
-        rgba(255,180,245,.12),
-        transparent 20%),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(112, 65, 180, 0.28),
+            rgba(12, 5, 40, 0.48) 70%
+        );
 
-        radial-gradient(circle at 70% 60%,
-        rgba(160,140,255,.12),
-        transparent 22%);
-
-    animation: backgroundMove 12s ease-in-out infinite alternate;
-
-    pointer-events: none;
+    z-index: 1;
 }
 
 
-/* ✨ البريق */
+/* بريق متحرك */
 
 .sparkles {
     position: fixed;
     inset: 0;
 
-    pointer-events: none;
-    z-index: 2;
-}
+    z-index: 8;
 
+    pointer-events: none;
+}
 
 .sparkle {
     position: absolute;
 
-    color: #fff;
+    color: white;
+
+    font-size: 18px;
 
     text-shadow:
-        0 0 6px #fff,
-        0 0 15px #d9b5ff;
+        0 0 5px white,
+        0 0 15px #d59cff;
 
-    animation: sparkle 3s ease-in-out infinite;
+    animation: sparkle 2.5s ease-in-out infinite;
 }
 
 
@@ -83,10 +79,15 @@ body::before {
 
 .container {
     position: relative;
-    z-index: 5;
+
+    z-index: 10;
 
     width: 90%;
     max-width: 900px;
+
+    margin: auto;
+
+    padding-top: 8vh;
 
     text-align: center;
 }
@@ -95,18 +96,18 @@ body::before {
 /* الاسم */
 
 .name {
-    font-size: 19px;
+    font-size: 18px;
 
     letter-spacing: 6px;
 
-    color: #e6b8e8;
+    color: #e8b9ed;
 
     margin-bottom: 8px;
 
     text-shadow:
-        0 0 8px #d889e8;
+        0 0 8px #d78cff;
 
-    animation: glow 3s ease-in-out infinite;
+    animation: glow 3s infinite;
 }
 
 
@@ -115,121 +116,128 @@ body::before {
 h1 {
     margin: 0;
 
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(38px, 6vw, 70px);
 
     color: white;
 
     text-shadow:
-        0 0 8px white,
-        0 0 20px #a48cff,
-        0 0 40px #765cff;
+        0 0 7px white,
+        0 0 18px #b38cff,
+        0 0 38px #815cff;
 
-    animation: titleFloat 4s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
 }
 
 
 /* النص */
 
 .subtitle {
-    margin-top: 14px;
-    margin-bottom: 30px;
+    margin-top: 12px;
+    margin-bottom: 28px;
 
     font-size: 17px;
 
-    color: #eadfff;
+    color: #eee2ff;
 
     text-shadow:
-        0 0 8px #a984df;
+        0 0 10px #aa7bdf;
 }
 
 
-/* Countdown */
+/* countdown */
 
 .countdown {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    gap: 17px;
+    gap: 16px;
 
-    max-width: 800px;
+    max-width: 790px;
 
     margin: auto;
 }
 
 
-/* الصناديق */
+/* boxes */
 
 .box {
-    padding: 22px 10px;
+    padding: 21px 10px;
 
-    border-radius: 22px;
+    border-radius: 21px;
 
     background:
-        rgba(67, 48, 120, .38);
+        rgba(35, 20, 82, 0.72);
 
     border:
-        1px solid rgba(225, 205, 255, .35);
+        1px solid
+        rgba(225, 194, 255, 0.42);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
 
     box-shadow:
-        0 0 20px rgba(130, 100, 255, .20),
-        inset 0 0 18px rgba(255,255,255,.04);
+        0 0 22px
+        rgba(153, 102, 255, 0.28),
 
-    transition: .3s ease;
+        inset 0 0 15px
+        rgba(255,255,255,.04);
 
-    animation: boxFloat 4s ease-in-out infinite;
+    animation:
+        boxFloat 4s ease-in-out infinite;
+
+    transition: .3s;
 }
 
 
 .box:hover {
     transform:
-        translateY(-7px)
+        translateY(-8px)
         scale(1.03);
 
     box-shadow:
-        0 0 30px rgba(190,150,255,.4);
+        0 0 35px
+        rgba(197, 144, 255, .5);
 }
 
 
 .box:nth-child(2) {
-    animation-delay: .3s;
+    animation-delay: .25s;
 }
 
 .box:nth-child(3) {
-    animation-delay: .6s;
+    animation-delay: .5s;
 }
 
 .box:nth-child(4) {
-    animation-delay: .9s;
+    animation-delay: .75s;
 }
 
 
 /* الأرقام */
 
 .number {
-    font-size: clamp(38px, 5vw, 60px);
+    font-size: clamp(36px, 5vw, 59px);
 
     font-weight: bold;
 
-    color: #c9ddff;
+    color: #c8ddff;
 
     text-shadow:
-        0 0 8px #9ac5ff,
-        0 0 20px #778bff,
-        0 0 35px #6870ff;
+        0 0 8px #a7caff,
+        0 0 20px #7894ff,
+        0 0 35px #6d6fff;
 
-    animation: numberGlow 2.5s ease-in-out infinite;
+    animation: numberGlow 2.5s infinite;
 }
 
 
 /* الكلمات */
 
 .label {
-    margin-top: 8px;
+    margin-top: 7px;
 
-    font-size: 13px;
+    font-size: 12px;
 
     letter-spacing: 3px;
 
@@ -240,41 +248,83 @@ h1 {
 /* الرسالة */
 
 .message {
-    margin-top: 28px;
+    margin-top: 26px;
 
     font-size: 18px;
 
-    color: #e7c9ff;
+    color: #e8caff;
 
     text-shadow:
-        0 0 10px #b979ff;
+        0 0 10px #b875ff;
 
-    animation: glow 3s ease-in-out infinite;
+    animation: glow 3s infinite;
 }
 
 
-/* 🌌 حركة الخلفية */
+/* 🌸 ورود صغيرة طائرة */
 
-@keyframes backgroundMove {
+.flower {
+    position: fixed;
 
-    0% {
-        transform: translate(0, 0) scale(1);
+    z-index: 7;
+
+    top: -30px;
+
+    pointer-events: none;
+
+    animation:
+        fall linear forwards,
+        sway ease-in-out infinite;
+}
+
+
+@keyframes fall {
+
+    from {
+        transform:
+            translateY(-40px)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+    }
+}
+
+
+@keyframes sway {
+
+    0%, 100% {
+        margin-left: 0;
     }
 
     50% {
-        transform: translate(2%, -2%) scale(1.05);
+        margin-left: 55px;
     }
-
-    100% {
-        transform: translate(-2%, 2%) scale(1);
-    }
-
 }
 
 
-/* العنوان */
+/* ✨ البريق */
 
-@keyframes titleFloat {
+@keyframes sparkle {
+
+    0%, 100% {
+        opacity: .15;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+}
+
+
+/* حركة العنوان */
+
+@keyframes float {
 
     0%, 100% {
         transform: translateY(0);
@@ -283,11 +333,10 @@ h1 {
     50% {
         transform: translateY(-7px);
     }
-
 }
 
 
-/* الصناديق */
+/* حركة الصناديق */
 
 @keyframes boxFloat {
 
@@ -298,39 +347,6 @@ h1 {
     50% {
         transform: translateY(-4px);
     }
-
-}
-
-
-/* بريق الأرقام */
-
-@keyframes numberGlow {
-
-    0%, 100% {
-        filter: brightness(1);
-    }
-
-    50% {
-        filter: brightness(1.3);
-    }
-
-}
-
-
-/* ✨ البريق */
-
-@keyframes sparkle {
-
-    0%, 100% {
-        opacity: .15;
-        transform: scale(.7) rotate(0deg);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.3) rotate(25deg);
-    }
-
 }
 
 
@@ -345,7 +361,20 @@ h1 {
     50% {
         opacity: 1;
     }
+}
 
+
+/* Glow الأرقام */
+
+@keyframes numberGlow {
+
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.3);
+    }
 }
 
 
@@ -354,8 +383,14 @@ h1 {
 @media (max-width: 700px) {
 
     .countdown {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
+
         gap: 10px;
+    }
+
+    .container {
+        padding-top: 7vh;
     }
 
     .name {
@@ -363,13 +398,12 @@ h1 {
     }
 
     .subtitle {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .message {
         font-size: 14px;
     }
-
 }
 
 </style>
@@ -379,25 +413,42 @@ h1 {
 <body>
 
 
+<div class="overlay"></div>
+
+
 <!-- ✨ البريق -->
 
 <div class="sparkles">
 
-    <span class="sparkle" style="left:8%; top:15%; animation-delay:0s;">✦</span>
+    <span class="sparkle"
+          style="left:7%;top:16%;">
+        ✦
+    </span>
 
-    <span class="sparkle" style="left:18%; top:72%; animation-delay:1s;">✧</span>
+    <span class="sparkle"
+          style="left:18%;top:65%;animation-delay:1s;">
+        ✧
+    </span>
 
-    <span class="sparkle" style="left:32%; top:12%; animation-delay:1.8s;">✦</span>
+    <span class="sparkle"
+          style="left:33%;top:12%;animation-delay:.5s;">
+        ✦
+    </span>
 
-    <span class="sparkle" style="left:48%; top:82%; animation-delay:.5s;">✧</span>
+    <span class="sparkle"
+          style="left:70%;top:16%;animation-delay:1.4s;">
+        ✧
+    </span>
 
-    <span class="sparkle" style="left:65%; top:18%; animation-delay:1.3s;">✦</span>
+    <span class="sparkle"
+          style="left:87%;top:30%;animation-delay:.8s;">
+        ✦
+    </span>
 
-    <span class="sparkle" style="left:78%; top:70%; animation-delay:2s;">✧</span>
-
-    <span class="sparkle" style="left:91%; top:25%; animation-delay:.8s;">✦</span>
-
-    <span class="sparkle" style="left:87%; top:85%; animation-delay:1.5s;">✧</span>
+    <span class="sparkle"
+          style="left:91%;top:76%;animation-delay:1.7s;">
+        ✧
+    </span>
 
 </div>
 
@@ -433,7 +484,9 @@ h1 {
 
         <div class="box">
 
-            <div class="number" id="days">
+            <div
+                class="number"
+                id="days">
                 0
             </div>
 
@@ -446,7 +499,9 @@ h1 {
 
         <div class="box">
 
-            <div class="number" id="hours">
+            <div
+                class="number"
+                id="hours">
                 00
             </div>
 
@@ -459,7 +514,9 @@ h1 {
 
         <div class="box">
 
-            <div class="number" id="minutes">
+            <div
+                class="number"
+                id="minutes">
                 00
             </div>
 
@@ -472,7 +529,9 @@ h1 {
 
         <div class="box">
 
-            <div class="number" id="seconds">
+            <div
+                class="number"
+                id="seconds">
                 00
             </div>
 
@@ -496,14 +555,15 @@ h1 {
 </div>
 
 
-
 <script>
 
 
-/* ⏳ Countdown jusqu'au 1 juin 2027 */
+/* ⏳ Countdown */
 
 const examDate =
-    new Date("2027-06-01T00:00:00").getTime();
+    new Date(
+        "2027-06-01T00:00:00"
+    ).getTime();
 
 
 function updateCountdown() {
@@ -517,72 +577,153 @@ function updateCountdown() {
 
     if (difference <= 0) {
 
-        document.getElementById("days").textContent = "0";
+        days.textContent = "0";
 
-        document.getElementById("hours").textContent = "00";
+        hours.textContent = "00";
 
-        document.getElementById("minutes").textContent = "00";
+        minutes.textContent = "00";
 
-        document.getElementById("seconds").textContent = "00";
+        seconds.textContent = "00";
 
         return;
     }
 
 
-    const days =
+    const d =
         Math.floor(
             difference /
             (1000 * 60 * 60 * 24)
         );
 
 
-    const hours =
+    const h =
         Math.floor(
             (difference /
             (1000 * 60 * 60)) % 24
         );
 
 
-    const minutes =
+    const m =
         Math.floor(
             (difference /
             (1000 * 60)) % 60
         );
 
 
-    const seconds =
+    const s =
         Math.floor(
             (difference / 1000) % 60
         );
 
 
     document.getElementById("days")
-        .textContent = days;
+        .textContent = d;
 
 
     document.getElementById("hours")
         .textContent =
-        String(hours).padStart(2, "0");
+        String(h).padStart(2, "0");
 
 
     document.getElementById("minutes")
         .textContent =
-        String(minutes).padStart(2, "0");
+        String(m).padStart(2, "0");
 
 
     document.getElementById("seconds")
         .textContent =
-        String(seconds).padStart(2, "0");
+        String(s).padStart(2, "0");
 
 }
 
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+
+/* 🌸❄️ ورود وثلج */
+
+const particles = [
+    "🌸",
+    "🌸",
+    "🌹",
+    "❄",
+    "❄",
+    "✦",
+    "✧"
+];
+
+
+function createFlower() {
+
+    const el =
+        document.createElement("div");
+
+    el.className = "flower";
+
+    el.textContent =
+        particles[
+            Math.floor(
+                Math.random() *
+                particles.length
+            )
+        ];
+
+
+    /*
+       نخليهم يخرجو
+       بزاف من الجوانب
+    */
+
+    if (Math.random() < .5) {
+
+        el.style.left =
+            Math.random() * 20 + "vw";
+
+    } else {
+
+        el.style.left =
+            80 + Math.random() * 20 + "vw";
+
+    }
+
+
+    el.style.fontSize =
+        12 + Math.random() * 15 + "px";
+
+
+    const duration =
+        7 + Math.random() * 7;
+
+
+    el.style.animationDuration =
+        duration + "s, " +
+        (2 + Math.random() * 2) + "s";
+
+
+    document.body.appendChild(el);
+
+
+    setTimeout(
+        () => el.remove(),
+        duration * 1000
+    );
+
+}
+
+
+setInterval(
+    createFlower,
+    500
+);
+
 
 </script>
-
 
 </body>
 
