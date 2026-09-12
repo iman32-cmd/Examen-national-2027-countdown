@@ -2,615 +2,676 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bac National 2027</title>
+<title>Imane | Bac National 2027</title>
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            overflow: hidden;
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
 
-            font-family: Georgia, "Times New Roman", serif;
-            color: white;
+    font-family: Georgia, "Times New Roman", serif;
 
-            background:
-                radial-gradient(circle at 50% 45%, #273c82 0%, transparent 35%),
-                linear-gradient(135deg, #080b2b, #171348, #301b55, #090b2d);
+    background:
+        linear-gradient(
+            rgba(10, 5, 35, 0.18),
+            rgba(10, 5, 35, 0.18)
+        ),
+        url("background.png");
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-        /* نجيمات الخلفية */
+    color: white;
+}
 
-        body::before {
-            content: "✦   ✧      ❄      ✦       🌸       ✧      ❄     🌸     ✦";
-            position: fixed;
-            inset: 0;
 
-            font-size: 28px;
-            line-height: 110px;
-            letter-spacing: 35px;
+/* طبقة خفيفة فوق الخلفية */
 
-            color: rgba(255, 210, 240, 0.65);
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
 
-            animation: starsMove 18s linear infinite;
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 25%,
+            rgba(8, 4, 35, 0.35) 100%
+        );
 
-            pointer-events: none;
-        }
+    pointer-events: none;
+    z-index: 1;
+}
 
-        .container {
-            width: 92%;
-            max-width: 1100px;
 
-            text-align: center;
+/* المحتوى */
 
-            position: relative;
-            z-index: 5;
-        }
+.container {
+    position: relative;
+    z-index: 5;
 
-        /* الاسم */
+    width: 90%;
+    max-width: 900px;
 
-        .name {
-            font-size: 18px;
-            letter-spacing: 5px;
+    margin: auto;
+    padding-top: 8vh;
 
-            color: #f4c8ef;
+    text-align: center;
+}
 
-            margin-bottom: 8px;
 
-            animation: softGlow 3s ease-in-out infinite;
-        }
+/* الاسم */
 
-        /* العنوان */
+.name {
+    font-size: 19px;
 
-        h1 {
-            margin: 0;
+    letter-spacing: 6px;
 
-            font-size: clamp(38px, 6vw, 72px);
+    color: #e8b9e9;
 
-            color: #ffffff;
+    margin-bottom: 8px;
 
-            text-shadow:
-                0 0 8px #ffffff,
-                0 0 25px #8d7dff;
+    text-shadow:
+        0 0 8px #d77be9;
 
-            animation: titleFloat 4s ease-in-out infinite;
-        }
+    animation: nameGlow 3s ease-in-out infinite;
+}
 
-        .top-text {
-            margin-top: 12px;
-            margin-bottom: 28px;
 
-            font-size: 17px;
+/* العنوان */
 
-            color: #e6d7ff;
-        }
+h1 {
+    margin: 0;
 
-        /* countdown */
+    font-size: clamp(38px, 6vw, 72px);
 
-        .countdown {
-            display: grid;
+    color: white;
 
-            grid-template-columns: repeat(4, 1fr);
+    text-shadow:
+        0 0 8px white,
+        0 0 18px #9b83ff,
+        0 0 35px #775cff;
 
-            gap: 18px;
+    animation: titleFloat 4s ease-in-out infinite;
+}
 
-            max-width: 780px;
 
-            margin: auto;
-        }
+/* الجملة */
 
-        .box {
-            padding: 22px 10px;
+.subtitle {
+    margin-top: 12px;
+    margin-bottom: 25px;
 
-            border-radius: 22px;
+    font-size: 17px;
 
-            background: rgba(80, 75, 160, 0.25);
+    color: #eee0ff;
 
-            border: 1px solid rgba(210, 190, 255, 0.45);
+    text-shadow: 0 0 8px #9e72d9;
+}
 
-            backdrop-filter: blur(12px);
 
-            box-shadow:
-                0 0 25px rgba(120, 100, 255, 0.18),
-                inset 0 0 20px rgba(255, 255, 255, 0.04);
+/* الصندوق ديال countdown */
 
-            animation: boxFloat 4s ease-in-out infinite;
-        }
+.countdown {
+    display: grid;
 
-        .box:nth-child(2) {
-            animation-delay: .3s;
-        }
+    grid-template-columns: repeat(4, 1fr);
 
-        .box:nth-child(3) {
-            animation-delay: .6s;
-        }
+    gap: 16px;
 
-        .box:nth-child(4) {
-            animation-delay: .9s;
-        }
+    max-width: 780px;
 
-        .number {
-            font-size: clamp(35px, 5vw, 58px);
+    margin: auto;
+}
 
-            font-weight: bold;
 
-            color: #b9d8ff;
+/* boxes */
 
-            text-shadow:
-                0 0 10px #6db8ff,
-                0 0 25px #667cff;
-        }
+.box {
+    padding: 20px 10px;
 
-        .label {
-            margin-top: 8px;
+    border-radius: 20px;
 
-            font-size: 13px;
+    background:
+        rgba(43, 27, 91, 0.72);
 
-            color: #e5ddff;
+    border: 1px solid
+        rgba(225, 190, 255, 0.45);
 
-            letter-spacing: 2px;
-        }
+    backdrop-filter: blur(12px);
 
-        .message {
-            margin-top: 27px;
+    box-shadow:
+        0 0 18px rgba(150, 100, 255, 0.22),
+        inset 0 0 15px rgba(255,255,255,0.04);
 
-            font-size: 18px;
+    transition: 0.35s ease;
 
-            color: #e9cfff;
+    animation: boxFloat 4s ease-in-out infinite;
+}
 
-            text-shadow: 0 0 10px #c27cff;
-        }
 
-        /* الشخصية */
+.box:hover {
+    transform:
+        translateY(-8px)
+        scale(1.04);
 
-        .girl {
-            position: fixed;
+    box-shadow:
+        0 0 30px rgba(190, 130, 255, 0.45);
+}
 
-            right: 2%;
-            bottom: -15px;
 
-            width: 300px;
-            max-width: 30vw;
+.box:nth-child(2) {
+    animation-delay: .3s;
+}
 
-            z-index: 3;
+.box:nth-child(3) {
+    animation-delay: .6s;
+}
 
-            filter:
-                drop-shadow(0 0 15px rgba(220, 160, 255, .35));
+.box:nth-child(4) {
+    animation-delay: .9s;
+}
 
-            animation: girlFloat 5s ease-in-out infinite;
-        }
 
-        /* طاولة */
+/* الأرقام */
 
-        .desk {
-            position: fixed;
+.number {
+    font-size: clamp(35px, 5vw, 58px);
 
-            bottom: 0;
-            left: 0;
+    font-weight: bold;
 
-            width: 100%;
-            height: 90px;
+    color: #c8ddff;
 
-            background:
-                linear-gradient(
-                    rgba(30, 18, 48, .2),
-                    rgba(12, 8, 28, .95)
-                );
+    text-shadow:
+        0 0 8px #8bbcff,
+        0 0 20px #7187ff,
+        0 0 35px #6670ff;
 
-            border-top: 2px solid rgba(230, 190, 255, .2);
+    animation: numberGlow 2.5s ease-in-out infinite;
+}
 
-            z-index: 2;
-        }
 
-        /* الكتب */
+/* الكلمات */
 
-        .books {
-            position: fixed;
+.label {
+    margin-top: 8px;
 
-            left: 25px;
-            bottom: 18px;
+    font-size: 13px;
 
-            z-index: 4;
+    letter-spacing: 3px;
 
-            text-align: left;
-        }
+    color: #eadfff;
+}
 
-        .book {
-            width: 170px;
 
-            margin-top: 5px;
-            padding: 8px 12px;
+/* الجملة الأخيرة */
 
-            border-radius: 5px;
+.message {
+    margin-top: 25px;
 
-            background: rgba(30, 20, 60, .9);
+    font-size: 17px;
 
-            color: #e6b7ef;
+    color: #e8c7ff;
 
-            box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    text-shadow:
+        0 0 10px #b66cff;
 
-            font-style: italic;
-        }
+    animation: softGlow 3s ease-in-out infinite;
+}
 
-        /* الورود والثلج المتحرك */
 
-        .particle {
-            position: fixed;
+/* 🌸❄️ الورود والثلج */
 
-            top: -40px;
+.particle {
+    position: fixed;
 
-            z-index: 10;
+    top: -50px;
 
-            pointer-events: none;
+    z-index: 10;
 
-            animation:
-                fall linear forwards,
-                sway ease-in-out infinite;
-        }
+    pointer-events: none;
 
-        @keyframes fall {
+    user-select: none;
 
-            from {
-                transform: translateY(-50px) rotate(0deg);
-            }
+    animation:
+        fall linear forwards,
+        sway ease-in-out infinite;
+}
 
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
 
-        }
+@keyframes fall {
 
-        @keyframes sway {
+    from {
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+    }
 
-            0%, 100% {
-                margin-left: 0;
-            }
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+    }
 
-            50% {
-                margin-left: 70px;
-            }
+}
 
-        }
 
-        @keyframes titleFloat {
+@keyframes sway {
 
-            0%, 100% {
-                transform: translateY(0);
-            }
+    0%, 100% {
+        margin-left: 0;
+    }
 
-            50% {
-                transform: translateY(-7px);
-            }
+    50% {
+        margin-left: 60px;
+    }
 
-        }
+}
 
-        @keyframes girlFloat {
 
-            0%, 100% {
-                transform: translateY(0);
-            }
+/* حركة العنوان */
 
-            50% {
-                transform: translateY(-8px);
-            }
+@keyframes titleFloat {
 
-        }
+    0%, 100% {
+        transform: translateY(0);
+    }
 
-        @keyframes boxFloat {
+    50% {
+        transform: translateY(-7px);
+    }
 
-            0%, 100% {
-                transform: translateY(0);
-            }
+}
 
-            50% {
-                transform: translateY(-4px);
-            }
 
-        }
+/* حركة الاسم */
 
-        @keyframes softGlow {
+@keyframes nameGlow {
 
-            0%, 100% {
-                opacity: .65;
-            }
+    0%, 100% {
+        opacity: .65;
+    }
 
-            50% {
-                opacity: 1;
-            }
+    50% {
+        opacity: 1;
+    }
 
-        }
+}
 
-        @keyframes starsMove {
 
-            0% {
-                transform: translateY(-100px);
-            }
+/* حركة الأرقام */
 
-            100% {
-                transform: translateY(100px);
-            }
+@keyframes numberGlow {
 
-        }
+    0%, 100% {
+        filter: brightness(1);
+    }
 
-        /* الهاتف */
+    50% {
+        filter: brightness(1.25);
+    }
 
-        @media (max-width: 700px) {
+}
 
-            .countdown {
-                grid-template-columns: repeat(2, 1fr);
-            }
 
-            .girl {
-                width: 190px;
-                max-width: 38vw;
-                right: -5px;
-                opacity: .9;
-            }
+/* حركة boxes */
 
-            .books {
-                display: none;
-            }
+@keyframes boxFloat {
 
-            .name {
-                font-size: 14px;
-            }
+    0%, 100% {
+        transform: translateY(0);
+    }
 
-        }
+    50% {
+        transform: translateY(-4px);
+    }
 
-    </style>
+}
 
+
+/* glow */
+
+@keyframes softGlow {
+
+    0%, 100% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* الهاتف */
+
+@media (max-width: 700px) {
+
+    .container {
+        padding-top: 7vh;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .box {
+        padding: 15px 5px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .message {
+        font-size: 14px;
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
-    <div class="container">
 
-        <div class="name">
-            KHADIJA ♡
-        </div>
+<div class="container">
 
-        <h1>
-            🎓 Bac National 2027
-        </h1>
-
-        <div class="top-text">
-            ✦ Les grands rêves commencent par de petits efforts... ✦
-            <br>
-            ⏳ Countdown jusqu'au 1er juin 2027
-        </div>
+    <div class="name">
+        IMANE ♡
+    </div>
 
 
-        <div class="countdown">
-
-            <div class="box">
-                <div class="number" id="days">0</div>
-                <div class="label">JOURS</div>
-            </div>
-
-            <div class="box">
-                <div class="number" id="hours">00</div>
-                <div class="label">HEURES</div>
-            </div>
-
-            <div class="box">
-                <div class="number" id="minutes">00</div>
-                <div class="label">MINUTES</div>
-            </div>
-
-            <div class="box">
-                <div class="number" id="seconds">00</div>
-                <div class="label">SECONDES</div>
-            </div>
-
-        </div>
+    <h1>
+        🎓 Bac National 2027
+    </h1>
 
 
-        <div class="message">
-            ✦ Chaque seconde te rapproche de ton objectif ✦
-        </div>
+    <div class="subtitle">
+
+        ✦ Les grands rêves commencent par de petits efforts... ✦
+
+        <br>
+
+        ⏳ Countdown jusqu'au 1er juin 2027
 
     </div>
 
 
-    <!-- الشخصية -->
-
-    <img
-        src="girl.png"
-        class="girl"
-        alt="Anime girl"
-    >
+    <div class="countdown">
 
 
-    <!-- الكتب -->
+        <div class="box">
 
-    <div class="books">
+            <div
+                class="number"
+                id="days">
+                0
+            </div>
 
-        <div class="book">
-            📖 Rêve ♡
+            <div class="label">
+                JOURS
+            </div>
+
         </div>
 
-        <div class="book">
-            📖 Travaille ♡
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="hours">
+                00
+            </div>
+
+            <div class="label">
+                HEURES
+            </div>
+
         </div>
 
-        <div class="book">
-            📖 Réussis ♡
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="minutes">
+                00
+            </div>
+
+            <div class="label">
+                MINUTES
+            </div>
+
         </div>
+
+
+        <div class="box">
+
+            <div
+                class="number"
+                id="seconds">
+                00
+            </div>
+
+            <div class="label">
+                SECONDES
+            </div>
+
+        </div>
+
 
     </div>
 
 
-    <div class="desk"></div>
+    <div class="message">
+
+        ✦ Chaque seconde te rapproche de ton objectif ✦
+
+    </div>
+
+</div>
 
 
-    <script>
 
-        /* Countdown */
-
-        const examDate =
-            new Date("2027-06-01T00:00:00").getTime();
+<script>
 
 
-        function updateCountdown() {
+/* التاريخ ديال الوطني */
 
-            const now =
-                new Date().getTime();
-
-            const difference =
-                examDate - now;
+const examDate =
+    new Date("2027-06-01T00:00:00").getTime();
 
 
-            if (difference <= 0) {
-
-                document.getElementById("days").textContent = "0";
-
-                document.getElementById("hours").textContent = "00";
-
-                document.getElementById("minutes").textContent = "00";
-
-                document.getElementById("seconds").textContent = "00";
-
-                return;
-            }
+function updateCountdown() {
 
 
-            const days =
-                Math.floor(
-                    difference /
-                    (1000 * 60 * 60 * 24)
-                );
+    const now =
+        new Date().getTime();
 
 
-            const hours =
-                Math.floor(
-                    (difference /
-                        (1000 * 60 * 60)) % 24
-                );
+    const difference =
+        examDate - now;
 
 
-            const minutes =
-                Math.floor(
-                    (difference /
-                        (1000 * 60)) % 60
-                );
+    if (difference <= 0) {
+
+        document.getElementById("days")
+            .textContent = "0";
+
+        document.getElementById("hours")
+            .textContent = "00";
+
+        document.getElementById("minutes")
+            .textContent = "00";
+
+        document.getElementById("seconds")
+            .textContent = "00";
+
+        return;
+    }
 
 
-            const seconds =
-                Math.floor(
-                    (difference / 1000) % 60
-                );
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
 
 
-            document.getElementById("days")
-                .textContent = days;
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
 
 
-            document.getElementById("hours")
-                .textContent =
-                String(hours).padStart(2, "0");
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
 
 
-            document.getElementById("minutes")
-                .textContent =
-                String(minutes).padStart(2, "0");
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
 
 
-            document.getElementById("seconds")
-                .textContent =
-                String(seconds).padStart(2, "0");
-
-        }
+    document.getElementById("days")
+        .textContent = days;
 
 
-        updateCountdown();
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2, "0");
 
-        setInterval(updateCountdown, 1000);
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
 
 
-        /* 🌸❄️ particles */
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
 
-        const particles = [
-            "🌸",
-            "🌸",
-            "🌹",
-            "❄",
-            "❄",
-            "✦",
-            "✧",
-            "🌸"
+}
+
+
+updateCountdown();
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+
+/* 🌸❄️ particles */
+
+const particles = [
+
+    "🌸",
+    "🌸",
+    "🌹",
+    "🌸",
+    "❄️",
+    "❄",
+    "✦",
+    "✧"
+
+];
+
+
+function createParticle() {
+
+
+    const particle =
+        document.createElement("div");
+
+
+    particle.className =
+        "particle";
+
+
+    particle.textContent =
+        particles[
+            Math.floor(
+                Math.random() *
+                particles.length
+            )
         ];
 
 
-        function createParticle() {
+    /* الجوانب */
 
-            const particle =
-                document.createElement("div");
+    if (Math.random() < 0.5) {
 
-            particle.className = "particle";
+        particle.style.left =
+            (Math.random() * 25) + "vw";
 
-            particle.textContent =
-                particles[
-                    Math.floor(
-                        Math.random() *
-                        particles.length
-                    )
-                ];
+    } else {
 
+        particle.style.left =
+            (75 + Math.random() * 25) + "vw";
 
-            /*
-                نخليهم يخرجو
-                أكثر من الجوانب
-            */
-
-            const side =
-                Math.random() < 0.5
-                    ? Math.random() * 25
-                    : 75 + Math.random() * 25;
+    }
 
 
-            particle.style.left =
-                side + "vw";
+    particle.style.fontSize =
+        (12 + Math.random() * 16) + "px";
 
 
-            particle.style.fontSize =
-                (12 + Math.random() * 16) + "px";
+    const duration =
+        7 + Math.random() * 8;
 
 
-            const duration =
-                7 + Math.random() * 8;
+    particle.style.animationDuration =
+        duration + "s, " +
+        (2 + Math.random() * 3) + "s";
 
 
-            particle.style.animationDuration =
-                duration + "s, " +
-                (2 + Math.random() * 3) + "s";
+    document.body.appendChild(
+        particle
+    );
 
 
-            document.body.appendChild(particle);
+    setTimeout(
+        () => particle.remove(),
+        duration * 1000
+    );
+
+}
 
 
-            setTimeout(
-                () => particle.remove(),
-                duration * 1000
-            );
-
-        }
+setInterval(
+    createParticle,
+    450
+);
 
 
-        setInterval(createParticle, 450);
+</script>
 
-    </script>
 
 </body>
 
