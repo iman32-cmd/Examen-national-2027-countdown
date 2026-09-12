@@ -8,6 +8,7 @@
     <title>Bac National 2027</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -15,148 +16,381 @@
         body {
             margin: 0;
             min-height: 100vh;
+            overflow: hidden;
+
+            font-family: Georgia, "Times New Roman", serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 50% 45%, #273c82 0%, transparent 35%),
+                linear-gradient(135deg, #080b2b, #171348, #301b55, #090b2d);
+
             display: flex;
             justify-content: center;
             align-items: center;
+        }
 
-            font-family: Arial, sans-serif;
-            color: white;
+        /* نجيمات الخلفية */
 
-            background: linear-gradient(
-                135deg,
-                #071a33,
-                #123b68,
-                #071a33
-            );
+        body::before {
+            content: "✦   ✧      ❄      ✦       🌸       ✧      ❄     🌸     ✦";
+            position: fixed;
+            inset: 0;
 
-            background-size: 300% 300%;
-            animation: backgroundMove 10s ease infinite;
+            font-size: 28px;
+            line-height: 110px;
+            letter-spacing: 35px;
+
+            color: rgba(255, 210, 240, 0.65);
+
+            animation: starsMove 18s linear infinite;
+
+            pointer-events: none;
         }
 
         .container {
-            width: 90%;
-            max-width: 900px;
+            width: 92%;
+            max-width: 1100px;
+
             text-align: center;
+
+            position: relative;
+            z-index: 5;
         }
+
+        /* الاسم */
+
+        .name {
+            font-size: 18px;
+            letter-spacing: 5px;
+
+            color: #f4c8ef;
+
+            margin-bottom: 8px;
+
+            animation: softGlow 3s ease-in-out infinite;
+        }
+
+        /* العنوان */
 
         h1 {
-            font-size: clamp(32px, 6vw, 60px);
-            margin: 0 0 12px;
+            margin: 0;
 
-            animation: titleFloat 3s ease-in-out infinite;
+            font-size: clamp(38px, 6vw, 72px);
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 8px #ffffff,
+                0 0 25px #8d7dff;
+
+            animation: titleFloat 4s ease-in-out infinite;
         }
 
-        .subtitle {
-            color: #9dd9ff;
-            font-size: 18px;
-            margin-bottom: 35px;
+        .top-text {
+            margin-top: 12px;
+            margin-bottom: 28px;
+
+            font-size: 17px;
+
+            color: #e6d7ff;
         }
+
+        /* countdown */
 
         .countdown {
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+
+            gap: 18px;
+
+            max-width: 780px;
+
+            margin: auto;
         }
 
         .box {
-            padding: 25px 10px;
-            border-radius: 20px;
+            padding: 22px 10px;
 
-            background: rgba(255, 255, 255, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 22px;
 
-            backdrop-filter: blur(10px);
+            background: rgba(80, 75, 160, 0.25);
 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(210, 190, 255, 0.45);
 
-            transition: transform 0.3s ease,
-                        box-shadow 0.3s ease;
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 0 25px rgba(120, 100, 255, 0.18),
+                inset 0 0 20px rgba(255, 255, 255, 0.04);
+
+            animation: boxFloat 4s ease-in-out infinite;
         }
 
-        .box:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+        .box:nth-child(2) {
+            animation-delay: .3s;
+        }
+
+        .box:nth-child(3) {
+            animation-delay: .6s;
+        }
+
+        .box:nth-child(4) {
+            animation-delay: .9s;
         }
 
         .number {
-            font-size: clamp(35px, 6vw, 60px);
-            font-weight: bold;
-            color: #4db8ff;
+            font-size: clamp(35px, 5vw, 58px);
 
-            animation: numberGlow 2s ease-in-out infinite;
+            font-weight: bold;
+
+            color: #b9d8ff;
+
+            text-shadow:
+                0 0 10px #6db8ff,
+                0 0 25px #667cff;
         }
 
         .label {
             margin-top: 8px;
-            font-size: 14px;
-            color: #d9ecff;
+
+            font-size: 13px;
+
+            color: #e5ddff;
+
+            letter-spacing: 2px;
         }
 
         .message {
-            margin-top: 30px;
-            font-size: 17px;
-            color: #b9dcf7;
+            margin-top: 27px;
+
+            font-size: 18px;
+
+            color: #e9cfff;
+
+            text-shadow: 0 0 10px #c27cff;
         }
 
-        /* حركة الخلفية */
-        @keyframes backgroundMove {
-            0% {
-                background-position: 0% 50%;
+        /* الشخصية */
+
+        .girl {
+            position: fixed;
+
+            right: 2%;
+            bottom: -15px;
+
+            width: 300px;
+            max-width: 30vw;
+
+            z-index: 3;
+
+            filter:
+                drop-shadow(0 0 15px rgba(220, 160, 255, .35));
+
+            animation: girlFloat 5s ease-in-out infinite;
+        }
+
+        /* طاولة */
+
+        .desk {
+            position: fixed;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 90px;
+
+            background:
+                linear-gradient(
+                    rgba(30, 18, 48, .2),
+                    rgba(12, 8, 28, .95)
+                );
+
+            border-top: 2px solid rgba(230, 190, 255, .2);
+
+            z-index: 2;
+        }
+
+        /* الكتب */
+
+        .books {
+            position: fixed;
+
+            left: 25px;
+            bottom: 18px;
+
+            z-index: 4;
+
+            text-align: left;
+        }
+
+        .book {
+            width: 170px;
+
+            margin-top: 5px;
+            padding: 8px 12px;
+
+            border-radius: 5px;
+
+            background: rgba(30, 20, 60, .9);
+
+            color: #e6b7ef;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,.4);
+
+            font-style: italic;
+        }
+
+        /* الورود والثلج المتحرك */
+
+        .particle {
+            position: fixed;
+
+            top: -40px;
+
+            z-index: 10;
+
+            pointer-events: none;
+
+            animation:
+                fall linear forwards,
+                sway ease-in-out infinite;
+        }
+
+        @keyframes fall {
+
+            from {
+                transform: translateY(-50px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+
+        }
+
+        @keyframes sway {
+
+            0%, 100% {
+                margin-left: 0;
             }
 
             50% {
-                background-position: 100% 50%;
+                margin-left: 70px;
             }
 
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
-        /* حركة العنوان */
         @keyframes titleFloat {
+
             0%, 100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-6px);
+                transform: translateY(-7px);
             }
+
         }
 
-        /* إضاءة الأرقام */
-        @keyframes numberGlow {
+        @keyframes girlFloat {
+
             0%, 100% {
-                text-shadow: 0 0 5px rgba(77, 184, 255, 0.2);
+                transform: translateY(0);
             }
 
             50% {
-                text-shadow: 0 0 18px rgba(77, 184, 255, 0.7);
+                transform: translateY(-8px);
             }
+
+        }
+
+        @keyframes boxFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+
+        }
+
+        @keyframes softGlow {
+
+            0%, 100% {
+                opacity: .65;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes starsMove {
+
+            0% {
+                transform: translateY(-100px);
+            }
+
+            100% {
+                transform: translateY(100px);
+            }
+
         }
 
         /* الهاتف */
-        @media (max-width: 600px) {
+
+        @media (max-width: 700px) {
+
             .countdown {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .box {
-                padding: 20px 8px;
+            .girl {
+                width: 190px;
+                max-width: 38vw;
+                right: -5px;
+                opacity: .9;
             }
+
+            .books {
+                display: none;
+            }
+
+            .name {
+                font-size: 14px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
     <div class="container">
 
-        <h1>🎓 Bac National 2027</h1>
+        <div class="name">
+            KHADIJA ♡
+        </div>
 
-        <div class="subtitle">
+        <h1>
+            🎓 Bac National 2027
+        </h1>
+
+        <div class="top-text">
+            ✦ Les grands rêves commencent par de petits efforts... ✦
+            <br>
             ⏳ Countdown jusqu'au 1er juin 2027
         </div>
+
 
         <div class="countdown">
 
@@ -182,67 +416,199 @@
 
         </div>
 
+
         <div class="message">
-            ✨ Chaque seconde te rapproche de ton objectif ✨
+            ✦ Chaque seconde te rapproche de ton objectif ✦
         </div>
 
     </div>
 
 
+    <!-- الشخصية -->
+
+    <img
+        src="girl.png"
+        class="girl"
+        alt="Anime girl"
+    >
+
+
+    <!-- الكتب -->
+
+    <div class="books">
+
+        <div class="book">
+            📖 Rêve ♡
+        </div>
+
+        <div class="book">
+            📖 Travaille ♡
+        </div>
+
+        <div class="book">
+            📖 Réussis ♡
+        </div>
+
+    </div>
+
+
+    <div class="desk"></div>
+
+
     <script>
 
-        const examDate = new Date("2027-06-01T00:00:00").getTime();
+        /* Countdown */
+
+        const examDate =
+            new Date("2027-06-01T00:00:00").getTime();
+
 
         function updateCountdown() {
 
-            const now = new Date().getTime();
+            const now =
+                new Date().getTime();
 
-            const difference = examDate - now;
+            const difference =
+                examDate - now;
+
 
             if (difference <= 0) {
 
                 document.getElementById("days").textContent = "0";
-                document.getElementById("hours").textContent = "00";
-                document.getElementById("minutes").textContent = "00";
-                document.getElementById("seconds").textContent = "00";
 
-                document.querySelector(".subtitle").textContent =
-                    "🎓 C'est le jour du Bac National !";
+                document.getElementById("hours").textContent = "00";
+
+                document.getElementById("minutes").textContent = "00";
+
+                document.getElementById("seconds").textContent = "00";
 
                 return;
             }
 
-            const days = Math.floor(
-                difference / (1000 * 60 * 60 * 24)
-            );
 
-            const hours = Math.floor(
-                (difference / (1000 * 60 * 60)) % 24
-            );
+            const days =
+                Math.floor(
+                    difference /
+                    (1000 * 60 * 60 * 24)
+                );
 
-            const minutes = Math.floor(
-                (difference / (1000 * 60)) % 60
-            );
 
-            const seconds = Math.floor(
-                (difference / 1000) % 60
-            );
+            const hours =
+                Math.floor(
+                    (difference /
+                        (1000 * 60 * 60)) % 24
+                );
 
-            document.getElementById("days").textContent = days;
 
-            document.getElementById("hours").textContent =
+            const minutes =
+                Math.floor(
+                    (difference /
+                        (1000 * 60)) % 60
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+
+            document.getElementById("days")
+                .textContent = days;
+
+
+            document.getElementById("hours")
+                .textContent =
                 String(hours).padStart(2, "0");
 
-            document.getElementById("minutes").textContent =
+
+            document.getElementById("minutes")
+                .textContent =
                 String(minutes).padStart(2, "0");
 
-            document.getElementById("seconds").textContent =
+
+            document.getElementById("seconds")
+                .textContent =
                 String(seconds).padStart(2, "0");
+
         }
+
 
         updateCountdown();
 
         setInterval(updateCountdown, 1000);
+
+
+        /* 🌸❄️ particles */
+
+        const particles = [
+            "🌸",
+            "🌸",
+            "🌹",
+            "❄",
+            "❄",
+            "✦",
+            "✧",
+            "🌸"
+        ];
+
+
+        function createParticle() {
+
+            const particle =
+                document.createElement("div");
+
+            particle.className = "particle";
+
+            particle.textContent =
+                particles[
+                    Math.floor(
+                        Math.random() *
+                        particles.length
+                    )
+                ];
+
+
+            /*
+                نخليهم يخرجو
+                أكثر من الجوانب
+            */
+
+            const side =
+                Math.random() < 0.5
+                    ? Math.random() * 25
+                    : 75 + Math.random() * 25;
+
+
+            particle.style.left =
+                side + "vw";
+
+
+            particle.style.fontSize =
+                (12 + Math.random() * 16) + "px";
+
+
+            const duration =
+                7 + Math.random() * 8;
+
+
+            particle.style.animationDuration =
+                duration + "s, " +
+                (2 + Math.random() * 3) + "s";
+
+
+            document.body.appendChild(particle);
+
+
+            setTimeout(
+                () => particle.remove(),
+                duration * 1000
+            );
+
+        }
+
+
+        setInterval(createParticle, 450);
 
     </script>
 
